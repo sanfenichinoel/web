@@ -1,0 +1,33 @@
+
+a{
+    text-decoration: none;
+}
+
+.row_center{
+    text-align: center;
+}
+
+.col_center{
+    display:flex;
+    flex-direction:column;
+    justify-content:center; 
+    align-items: center;
+}
+
+
+.index_background{
+    margin: 100px 0;
+    background:linear-gradient(
+                to left,
+                rgb(116, 179, 238),
+                rgb(108, 230, 169)
+                );
+}
+
+.flex{
+    display:flex;
+}
+
+.shadow{
+    box-shadow: 0 8px 39px 0 rgba(0, 0, 0, 0.37);
+}

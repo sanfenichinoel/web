@@ -7,8 +7,10 @@ function GetFile()
     var fs = require('fs');
     let _files = fs.readdirSync(path);
     
-    _files.forEach(function (item) {
-        files.push(item);
+    _files.forEach(function (item) 
+    {
+        let _item = item.split(".")[0];
+        files.push(_item);
     })
     let myfile = JSON.stringify(files);
     return myfile;

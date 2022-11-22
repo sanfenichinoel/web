@@ -7,7 +7,7 @@ body{
 }
 
 .background{
-    background-image: url(../img/background/blogs_background.jpg);
+    /* background-image: url(../img/background/blogs_background.jpg); */
     background-repeat:no-repeat;
     background-size:cover;
     background-attachment: fixed;
@@ -61,7 +61,7 @@ body{
 .left_contents_page{
     background-color: rgb(200, 200, 200);
     border-radius: 15px;
-    width:280px;
+    width:220px;
     margin-right: 5px;
     margin-top: 20px;
 }
@@ -94,7 +94,7 @@ body{
 
 .right_other{
     background-color: rgb(200, 200, 200);
-    width: 260px;
+    width: 240px;
     margin-left: 5px;
     margin-top: 20px;
     border-radius: 15px;

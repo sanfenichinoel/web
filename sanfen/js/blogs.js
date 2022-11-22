@@ -1,8 +1,7 @@
 
 function showMarkdown(name) 
 {
-    var file = "./md/" + name;
-    // console.log(file);
+    var file = "./md/" + name + ".md";
     var xmlhttp = new XMLHttpRequest();
 
     xmlhttp.onreadystatechange = function () {
@@ -27,15 +26,17 @@ function getfiles()
 
     for(let i = 0;i < files.length;i++){
         let file = files[i];
-
-        document.write(" \
-            <div class=\"blogs_list\" id=\"file" + file + "\"> \
-            \
-            </div> \
-            <script>showMarkdown(\"" + file + "\"); \
-                console.log(\"" + file + "\"); \
-            </script>"
-        );
+        // let fileurl = encodeURI(file);
+        document.write
+        ("                                                                                              \
+            <a href=\"blog.html?name=" + file + "\" target=\"_blank\" rel=\"noopener noreferrer\" >          \
+                <div class=\"blogs_list\" id=\"file" + file + "\">                                      \
+                </div>                                                                                  \
+                <script>                                                                                \
+                    showMarkdown(\"" + file + "\");                                                     \
+                </script>                                                                               \
+            </a>                                                                                        \
+        ");
     }
 }
 

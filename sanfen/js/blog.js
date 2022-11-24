@@ -17,8 +17,6 @@ function Title()
 
 function showMarkdown(name) 
 {
-
-    
     var file = "./md/" + name + ".md";
     var xmlhttp = new XMLHttpRequest();
 

@@ -1,9 +1,10 @@
 
 function showMarkdown(name) 
 {
+    document.getElementById("filetitle" + name).innerHTML = name;
+
     var file = "./md/" + name + ".md";
     var xmlhttp = new XMLHttpRequest();
-
     xmlhttp.onreadystatechange = function () {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             document.getElementById("file" + name).innerHTML = marked(xmlhttp.responseText);
@@ -28,14 +29,18 @@ function getfiles()
         let file = files[i];
         // let fileurl = encodeURI(file);
         document.write
-        ("                                                                                              \
-            <a href=\"blog.html?name=" + file + "\" target=\"_blank\" rel=\"noopener noreferrer\" >          \
-                <div class=\"blogs_list\" id=\"file" + file + "\">                                      \
+        ("                                                                                              \                                                                                         \
+            <div class=\"blogs_list\" >                                                                 \
+                <a class=\"file_title\" id=\"filetitle" + file + "\" href=\"blog.html?name=" + file + "\" target=\"_blank\" rel=\"noopener noreferrer\">                         \
+                        标题                                                                                \
+                </a>                                                                                       \
+                <div class=\"file_other\" id=\"file" + file + "\">                                 \
+                        主体预览                                                                         \
                 </div>                                                                                  \
-                <script>                                                                                \
-                    showMarkdown(\"" + file + "\");                                                     \
-                </script>                                                                               \
-            </a>                                                                                        \
+            </div>                                                                                      \
+            <script>                                                                                \
+                showMarkdown(\"" + file + "\");                                                     \
+            </script>                                                                               \                                                                                     \
         ");
     }
 }

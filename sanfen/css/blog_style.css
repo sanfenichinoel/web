@@ -1,6 +1,6 @@
 
 body{
-    opacity: 0.75;
+    opacity: 0.85;
     margin: 0%;
     display: flex;
     flex-direction: column;
@@ -22,11 +22,11 @@ body{
 .head{
     padding: 10px 0 10px 30px;
     font-size: 150%;
-    background-color: rgb(138, 225, 249);
-    border-radius: 15px;
+    background-color: rgba(138, 225, 249, 0.871);
+    border-radius: 5px;
     box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.173);
     z-index: 1;
-    opacity: 75%;
+    opacity: 90%;
 }
 
 .main_body{
@@ -44,7 +44,7 @@ body{
 .markdown_back{
     flex:1;
     background-color: rgba(250, 235, 215, 0.71);
-    margin: 10px;
+    margin: 10%;
     margin-top: 0;
     margin-bottom: 0;
     padding: 2%;

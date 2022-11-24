@@ -17,6 +17,8 @@ function Title()
 
 function showMarkdown(name) 
 {
+
+    
     var file = "./md/" + name + ".md";
     var xmlhttp = new XMLHttpRequest();
 
@@ -27,10 +29,12 @@ function showMarkdown(name)
     }
     xmlhttp.open("GET", file, true);
     xmlhttp.send();
+
 }
 
 function Article()
 {
+
     let fileName = GetName();
     showMarkdown(fileName);
 }

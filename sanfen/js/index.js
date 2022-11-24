@@ -1,6 +1,6 @@
 function sayxun()
 {
-    let str = "好菜 好菜 好菜 好菜";
+    let str = "好菜 好菜 好菜 好菜 好菜";
     let output = document.getElementById("myxun");
     let i = 0;
     let timer = setInterval( 

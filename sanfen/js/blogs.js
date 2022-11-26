@@ -1,7 +1,8 @@
 
-function showMarkdown(name) 
+function showMarkdown(name, time) 
 {
     document.getElementById("filetitle" + name).innerHTML = name;
+    document.getElementById("filetime" + name).innerHTML = time;
 
     var file = "./md/" + name + ".md";
     var xmlhttp = new XMLHttpRequest();
@@ -18,29 +19,42 @@ function getfiles()
 {
     let files = [];
     let xhr = new XMLHttpRequest();
-
-    xhr.open("get","http://sanfensum.cn:8010/api/", false);
+    
+    xhr.open("get","http://www.sanfensum.cn:8010/allmyfiles", false);
     xhr.send();
     files = xhr.responseText;
     files = JSON.parse(files);
     console.log(files);
+    if (files == "select error"){
+        alert("数据库连接错误");
+        return;
+    }
 
-    for(let i = 0;i < files.length;i++){
-        let file = files[i];
+
+    for(let i = 0 ; i < files.length; i++){
+        let file = files[i]["name"];
+        let _time = files[i]["time"];
+        // console.log(file);
+        // console.log(_time);
         // let fileurl = encodeURI(file);
         document.write
         ("                                                                                              \                                                                                         \
             <div class=\"blogs_list\" >                                                                 \
-                <a class=\"file_title\" id=\"filetitle" + file + "\" href=\"blog.html?name=" + file + "\" target=\"_blank\" rel=\"noopener noreferrer\">                         \
-                        标题                                                                                \
+                <a class=\"file_title_and_time\" href=\"blog.html?name=" + file + "\" target=\"_blank\" rel=\"noopener noreferrer\">                         \
+                    <div class=\"file_title\" id=\"filetitle" + file + "\" >                                               \
+                        标题                                                                            \
+                    </div>                                                                              \
+                    <div class=\"file_time\" id=\"filetime" + file + "\" >                                                               \
+                        时间                                                                \
+                    </div>                                                                          \
                 </a>                                                                                       \
-                <div class=\"file_other\" id=\"file" + file + "\">                                 \
+                <div class=\"file_other\" id=\"file" + file + "\">                                       \
                         主体预览                                                                         \
                 </div>                                                                                  \
             </div>                                                                                      \
             <script>                                                                                \
-                showMarkdown(\"" + file + "\");                                                     \
-            </script>                                                                               \                                                                                     \
+                showMarkdown(\"" + file + "\", \"" + _time + "\" );                                  \
+            </script>                                                                                 \
         ");
     }
 }

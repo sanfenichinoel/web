@@ -32,7 +32,6 @@ function showMarkdown(name)
 
 function Article()
 {
-
     let fileName = GetName();
     showMarkdown(fileName);
 }

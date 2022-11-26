@@ -33,7 +33,7 @@ make && make install
 ```
 
 
-别的什么题外话  
+别的什么无关的题外话  
 ```bash
 pip3 uninstall uvicorn
 pip3 install hypercorn

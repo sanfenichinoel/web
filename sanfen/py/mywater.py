@@ -1,7 +1,7 @@
 
 import pymysql
 
-class Mysql():
+class Mysql_water():
     def __init__(self) -> None:
         self.db = pymysql.connect(
                 host='localhost',
@@ -20,8 +20,8 @@ class Mysql():
         """
 
         sql = """
-            select * from files
-            order by create_time desc;
+            select * from waters
+            order by time asc;
             """
         try:
             self.cursor.execute(sql)
@@ -30,16 +30,16 @@ class Mysql():
         except:
             return False
 
-    def insert(self, name:str, time:str, url:str):
+    def insert(self, water:str, time:str):
         """
         插入数据
         """
 
         sql = """
-            insert into files
+            insert into waters
             values
-            ("{}", "{}", "{}");
-        """.format(name, time, url)
+            ("{}", "{}");
+        """.format(water, time)
 
         try:
             self.cursor.execute(sql)
@@ -49,21 +49,16 @@ class Mysql():
             self.db.rollback()
             return False
 
-    def update(self, name:str, time:str, url:str):
-        """
-        修改
-        """
-        pass
 
-    def delete(self, url:str):
+    def delete(self, time:str):
         """
         删除
         """
 
         sql = """
-            delete from files
-            where name = "{}";
-        """.format(url)
+            delete from waters
+            where time = {};
+        """.format(time)
 
         try:
             self.cursor.execute(sql)
@@ -73,7 +68,6 @@ class Mysql():
             self.db.rollback()
             print(sql)
             return False
-
 
 # if __name__ == "__main__":
 #     sql = Mysql()

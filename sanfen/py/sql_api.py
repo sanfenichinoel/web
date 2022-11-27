@@ -4,10 +4,11 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
-import pymysql
 from mysql import Mysql
+from mywater import Mysql_water
 
 mysql = Mysql()
+mywater = Mysql_water()
 
 app = FastAPI()
 
@@ -24,7 +25,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.get("/allmyfiles")
+#  markdown 文件 ####################################################
+@app.get("/files/allmyfiles")
 def AllMyFile():
     myFiles = mysql.select_all_data()
 
@@ -41,7 +43,7 @@ def AllMyFile():
         data.append(_data)
     return data
 
-@app.get("/insert")
+@app.get("/files/insert")
 def Insert(name:str):
     _time = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
     _url = "../md/" + name + ".md"
@@ -49,5 +51,37 @@ def Insert(name:str):
     ok = mysql.insert(name, _time, _url)
     return ok
 
+
+##  水    #########################################
+@app.get("/water/allmywater")
+def AllMyFile():
+    myWaters = mywater.select_all_data()
+
+    if myWaters is False:
+        return "select error"
+
+    waters = []
+    for water in myWaters:
+        _water = {
+            "water": water[0],
+            "time": water[1]
+        }
+        waters.append(_water)
+    return waters
+
+@app.get("/water/insert")
+def Insert(water:str):
+    _time = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
+
+    ok = mywater.insert(water, _time)
+    return ok
+
+
+@app.get("/water/delete")
+def Delete(_time:str):
+    ok = mywater.delete(_time)
+    return ok
+
+
 if __name__ == "__main__":
-    uvicorn.run("blogs_api:app", host="0.0.0.0", port=8010, log_level="info")
+    uvicorn.run("sql_api:app", host="0.0.0.0", port=8010, log_level="info")

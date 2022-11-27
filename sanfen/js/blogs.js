@@ -20,7 +20,7 @@ function getfiles()
     let files = [];
     let xhr = new XMLHttpRequest();
     
-    xhr.open("get","http://www.sanfensum.cn:8010/allmyfiles", false);
+    xhr.open("get","http://www.sanfensum.cn:8010/files/allmyfiles", false);
     xhr.send();
     files = xhr.responseText;
     files = JSON.parse(files);
@@ -34,8 +34,6 @@ function getfiles()
     for(let i = 0 ; i < files.length; i++){
         let file = files[i]["name"];
         let _time = files[i]["time"];
-        // console.log(file);
-        // console.log(_time);
         // let fileurl = encodeURI(file);
         document.write
         ("                                                                                              \                                                                                         \

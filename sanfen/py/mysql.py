@@ -6,7 +6,7 @@ class Mysql():
         self.db = pymysql.connect(
                 host='localhost',
                 user='root',
-                password='94173210ZQ.sql',
+                password='**********',
                 database='sanfen_markdown'
             )
         self.cursor = self.db.cursor()

@@ -70,5 +70,6 @@ function GetSubmit()
     
     sub.value = "";
     document.querySelector(".popup").style.display = "none";
+    location.reload();
 }
 

@@ -46,7 +46,6 @@ function Flip()
                 300
             )
         }
-        console.log(login);
     }
     face_head.onclick = function(){
         f();
@@ -57,5 +56,16 @@ function Flip()
             f();
         }
     }
+}
 
+function Login()
+{
+    let sub = document.getElementById("password");
+    let pwd = sub.value;
+
+    // let xhr = new XMLHttpRequest();
+    // xhr.open("get","http://www.sanfensum.cn:8010/login?pwd=" + pwd, false);
+    // xhr.send();
+
+    location.reload();
 }

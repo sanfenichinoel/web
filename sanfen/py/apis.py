@@ -1,16 +1,23 @@
-import json
 import time
 from fastapi import FastAPI
+from fastapi.requests import Request
 from fastapi.middleware.cors import CORSMiddleware
+from slowapi import Limiter, _rate_limit_exceeded_handler
+from slowapi.util import get_remote_address
+from slowapi.errors import RateLimitExceeded
 import uvicorn
 
 from mysql import Mysql
 from mywater import Mysql_water
+from mypwd import IsMe
 
 mysql = Mysql()
 mywater = Mysql_water()
 
+limiter = Limiter(key_func=get_remote_address)
 app = FastAPI()
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
 origins = [
     "http://www.sanfensum.cn",
@@ -44,7 +51,8 @@ def AllMyFile():
     return data
 
 @app.get("/sqlapi/files/insert")
-def Insert(name:str):
+@limiter.limit("1/3second")
+def Insert(name:str, request: Request):
     _time = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
     _url = "../md/" + name + ".md"
 
@@ -70,7 +78,8 @@ def AllMyFile():
     return waters
 
 @app.get("/sqlapi/water/insert")
-def Insert(water:str):
+@limiter.limit("1/3second")
+def Insert(water:str, request: Request):
     _time = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
 
     ok = mywater.insert(water, _time)
@@ -83,5 +92,12 @@ def Delete(_time:str):
     return ok
 
 
+# login  ########################################
+@app.get("/login")
+@limiter.limit("1/3second")
+def Login(pwd:str, request: Request):
+    return IsMe(pwd)
+
+
 if __name__ == "__main__":
-    uvicorn.run("sql_api:app", host="0.0.0.0", port=8010, log_level="info")
+    uvicorn.run("apis:app", host="0.0.0.0", port=8010, log_level="info")

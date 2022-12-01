@@ -1,4 +1,24 @@
 
+.index_background{
+    margin: 1px 0 0 0;
+    background:linear-gradient(
+                to left,
+                rgb(116, 179, 238),
+                rgb(108, 230, 169)
+                );           
+}
+
+.flip_card{
+    transform-style: preserve-3d;
+    transition: 0.6s;
+    position: relative;
+    perspective: 1000px;
+}
+.face{
+    backface-visibility:hidden;
+    z-index: 1;
+}
+
 @keyframes fadeInLeft{
     from{
         opacity: 0;
@@ -89,6 +109,68 @@
     width: 27%!important;
     height:80px!important;
 }
+
+
+
+/* 登录页面 */
+.back_background{
+    display: none;
+    backface-visibility:hidden;
+    transform: rotateY(180deg);
+    position: absolute;
+    height: 90vh;
+    width: 100vw;
+}
+
+.back{
+    padding: 2%;
+    height: 25vh;
+    width: 16%;
+    
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    border-radius: 25px;
+    box-shadow:inset 0 0 6px rgba(255, 255, 255, 0.2);
+    
+    position: absolute;
+    left: 40%;
+    top: 25%; 
+    z-index: 3;
+}
+
+.login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login_title{
+    align-self:center;
+    font-size: 200%;
+    font-weight: 1000;
+}
+
+.password{
+    text-align: center;
+    margin: 18% 10% 10% 10%;
+    width: 60%;
+    border: 0;
+    padding: 5% 8%;
+    /* border-radius: 5%; */
+}
+
+.submit{
+    margin: 10%;
+    width: 30%;
+    height: 30px;
+    font-weight: 500;
+    background-color: rgba(110, 181, 222, 0.75);
+    border-radius: 5px ;
+    border: 10px;
+}
+
 
 
 .footer{

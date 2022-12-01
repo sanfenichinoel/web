@@ -2,7 +2,7 @@
 function GetWater()
 {
     let xhr = new XMLHttpRequest();
-    xhr.open("get","http://www.sanfensum.cn:8010/water/allmywater", false);
+    xhr.open("get","http://www.sanfensum.cn:8010/sqlapi/water/allmywater", false);
     xhr.send();
 
     let waters = xhr.responseText;
@@ -65,7 +65,7 @@ function GetSubmit()
     console.log(txt);
 
     let xhr = new XMLHttpRequest();
-    xhr.open("get","http://www.sanfensum.cn:8010/water/insert?water=" + txt, false);
+    xhr.open("get","http://www.sanfensum.cn:8010/sqlapi/water/insert?water=" + txt, false);
     xhr.send();
     
     sub.value = "";

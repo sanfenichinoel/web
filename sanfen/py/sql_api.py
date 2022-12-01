@@ -26,7 +26,7 @@ app.add_middleware(
 )
 
 #  markdown 文件 ####################################################
-@app.get("/files/allmyfiles")
+@app.get("/sqlapi/files/allmyfiles")
 def AllMyFile():
     myFiles = mysql.select_all_data()
 
@@ -43,7 +43,7 @@ def AllMyFile():
         data.append(_data)
     return data
 
-@app.get("/files/insert")
+@app.get("/sqlapi/files/insert")
 def Insert(name:str):
     _time = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
     _url = "../md/" + name + ".md"
@@ -53,7 +53,7 @@ def Insert(name:str):
 
 
 ##  水    #########################################
-@app.get("/water/allmywater")
+@app.get("/sqlapi/water/allmywater")
 def AllMyFile():
     myWaters = mywater.select_all_data()
 
@@ -69,7 +69,7 @@ def AllMyFile():
         waters.append(_water)
     return waters
 
-@app.get("/water/insert")
+@app.get("/sqlapi/water/insert")
 def Insert(water:str):
     _time = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
 
@@ -77,7 +77,7 @@ def Insert(water:str):
     return ok
 
 
-@app.get("/water/delete")
+@app.get("/sqlapi/water/delete")
 def Delete(_time:str):
     ok = mywater.delete(_time)
     return ok

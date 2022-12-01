@@ -16,18 +16,46 @@ function sayxun()
     )
 }
 
-function rand()
+function Flip()
 {
-    let min_num = document.getElementById("minn").value
-    console.log(min_num);
-    let txt = document.getElementById("rand");
-    txt.innerHTML = "";
-    let x = Math.ceil( Math.random() * 100 );
+    var login = false;
+    var flip_card = document.getElementById("flip_card");
+    var face = document.getElementById("face");
+    var face_head = document.getElementById("head_card");
+    var back = document.getElementById("back");
+    var back_ground = document.getElementById("back_background");
 
-    for(let i = 0;i < min_num;i++){
-        txt.innerHTML += x;
-        txt.innerHTML += " ";
-        x = Math.ceil( Math.random() * 100 );
-
+    function f() {
+        login = !login;
+        if(login){
+            flip_card.style.transform = "rotateY(180deg)";
+            setTimeout(
+                function(){
+                    face.style.display = "none";
+                    back_ground.style.display = "block";
+                },
+                300
+            )
+        }else{
+            flip_card.style.transform = "rotateY(0deg)";
+            setTimeout(
+                function(){
+                    face.style.display = "block";
+                    back_ground.style.display = "none";
+                },
+                300
+            )
+        }
+        console.log(login);
     }
+    face_head.onclick = function(){
+        f();
+    }
+
+    window.onclick = function(event) {
+        if (event.target == back_ground) {
+            f();
+        }
+    }
+
 }

@@ -18,51 +18,76 @@
 
 <body class="index_background">
 
-    <div class="row_center index_head_card">
-
-        <div class="head_card">
-            <img class="index_head_img rotare360" src="./img/first.png">
-            <br>
-            <b class="txt_big">sanfen</b>
-            <br>
-            <span class="txt_small" id="myxun"></span>
-            <script> sayxun() </script>
-            <br>
-            <br>
-        </div>
+    <!-- 大主页和登录页 -->
+    <div class="flip_card" id="flip_card">
+        <!-- 正面 主页 -->
+        <div class="face" id="face">
+            <div class="row_center index_head_card">
+                <div class="head_card" id="head_card">
+                    <img class="index_head_img rotare360" src="./img/first.png">
+                    <br>
+                    <b class="txt_big">sanfen</b>
+                    <br>
+                    <span class="txt_small" id="myxun"></span>
+                    <script> sayxun() </script>
+                    <br>
+                    <br>
+                </div>
+                
+                <div class="buttones">
+                    <a href="http://www.sanfensum.cn/" target="_blank" rel="noopener noreferrer">
+                        <button class="button">
+                            <b>sanfen的主页</b><br>home
+                        </button>
+                    </a>
+            
+                    <a href="./blogs.html" target="_blank">
+                        <button class="button">
+                            <b>博客</b><br>blog
+                        </button>
+                    </a>
         
-        <div class="buttones">
-            <a href="http://www.sanfensum.cn/" target="_blank" rel="noopener noreferrer">
-                <button class="button">
-                    <b>sanfen的主页</b><br>home
-                </button>
-            </a>
+                    <a href="https://github.com/sanfenichinoel" target="_blank" rel="noopener noreferrer">
+                        <button class="button">
+                            <b>库</b><br>github
+                        </button>
+                    </a>
+        
+                    <a href="http://tianqing.sanfensum.cn/" target="_blank" rel="noopener noreferrer">
+                        <button class="button">
+                            <b>天清的主页</b><br>good
+                        </button>
+                    </a>
+        
+                    <a href="./water.html" target="_blank">
+                        <button class="button">
+                            <b>水</b><br>water
+                        </button>
+                    </a>
+            
+                </div>
     
-            <a href="./blogs.html" target="_blank">
-                <button class="button">
-                    <b>博客</b><br>blog
-                </button>
-            </a>
-
-            <a href="https://github.com/sanfenichinoel" target="_blank" rel="noopener noreferrer">
-                <button class="button">
-                    <b>库</b><br>github
-                </button>
-            </a>
-
-            <a href="http://tianqing.sanfensum.cn/" target="_blank" rel="noopener noreferrer">
-                <button class="button">
-                    <b>天清的主页</b><br>good
-                </button>
-            </a>
-
-            <a href="./water.html" target="_blank">
-                <button class="button">
-                    <b>水</b><br>water
-                </button>
-            </a>
-    
+            </div>
         </div>
+
+        <!-- 反面 登录界面 -->
+        <div class="back_background" id="back_background">
+
+            <div class="back" id="back">
+                <div class="login">
+                    <div class="login_title">
+                        <span>Login</span>
+                    </div>
+                    <input class="password" type="password">
+                    <button class="submit">
+                        登录
+                    </button>
+                </div>
+            </div>
+
+        </div>
+        <script> Flip(); </script>
+
     </div>
 
     <footer class="footer">

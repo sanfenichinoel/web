@@ -20,7 +20,7 @@ function getfiles()
     let files = [];
     let xhr = new XMLHttpRequest();
     
-    xhr.open("get","http://www.sanfensum.cn:8010/files/allmyfiles", false);
+    xhr.open("get","http://www.sanfensum.cn:8010/sqlapi/files/allmyfiles", false);
     xhr.send();
     files = xhr.responseText;
     files = JSON.parse(files);
